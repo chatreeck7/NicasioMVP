@@ -11,6 +11,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { Col, Container, Row } from "react-bootstrap";
 import WeightForm from "./weightForm";
 import { sendMessage } from "../utils/script";
+import { processQuestionMessage } from "../utils/string-processing";
 
 const mockMeat = ["None", "beef", "chicken", "pork", "fish", "lamb"];
 const mockVeg = ["None", "tomato", "potato", "onion", "carrot", "broccoli"];
@@ -27,6 +28,9 @@ export default function InfoForm() {
     else if (label === "Vegetable") setVeg([event.target.value as string, ""]);
     else setCondiment([event.target.value as string, ""]);
   };
+
+  const exampleMenus = processQuestionMessage(`Can you cook 5 meals (prefer Thai food) with these ingredients for me ? And please return in this format: \nMenu: Pad Thai \nDescription: A classic Thai dish made with stir-fried rice noodles, tofu, eggs, and a tangy tamarind sauce. \nCooking direction: \n  1: Soak rice noodles in warm water for 20-30 minutes. \n  2: Heat oil in a wok or large skillet over high heat. \n  3: Add tofu, garlic, and shallots, and stir-fry for 2-3 minutes. \n  4: Push tofu and veggies to the side, and crack eggs into the pan. \n  5: Add soaked noodles, tamarind sauce, fish sauce, and sugar. Stir-fry until well combined. \nImage: https://example.com/pad-thai.jpg`);
+  console.log(exampleMenus);
 
   const handleSubmit = async () => {
     // format the ingredient information before passing to chat gpt api

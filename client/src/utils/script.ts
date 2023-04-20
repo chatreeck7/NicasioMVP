@@ -6,19 +6,21 @@ const openai = new OpenAIApi(
   })
 );
 
+const questionMessage = `Can you cook 5 meals (prefer Thai food) with these ingredients for me ? And please return in this format: \nMenu: ..... \nDescription: ..... \nCooking direction: \n \t 1: .... \n \t 2: .... \n\t 3: .... \n\t .... \n Image: ....<URL>.... .`
+
 export const sendMessage = async (ingredients: string[]) => {
-  let content = `I have ingrediecns such as: `;
+  let content = `I have ingredients such as: `;
   let result = "";
   // formatted list of ingredients into the natural language format
   const formattedIngredients = (ingredients: string[]) => {
-    ingredients.map((ingredient) => {
+    ingredients.map((ingredient):void => {
       content += ` ${ingredient}, `;
     });
   };
 
   formattedIngredients(ingredients);
 
-  content += `Can you cook 3 meals (prefer Thai food) with these ingredients for me ? And please return in this format: \nMenu: ..... \nCooking direction: \n \t 1: .... \n \t 2: .... .`;
+  content += questionMessage;
 
   console.log("content: ", content);
 
