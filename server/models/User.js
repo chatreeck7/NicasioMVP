@@ -3,9 +3,13 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
 const UserSchema= new mongoose.Schema({
-    name: {
+    firstname: {
         type: String,
-        required: [true, 'Please add a name'],
+        required: [true, 'Please add a firstname'],
+    },
+    lastname: {
+        type: String,
+        required: [true, 'Please add a lastname'],
     },
     email: {
         type: String,
@@ -16,6 +20,29 @@ const UserSchema= new mongoose.Schema({
             'Please add a valid email'
         ]
     },
+    sex: {
+        type: String,
+        required: [true, 'Please add a sex'],
+    },
+    symptom:{
+        type: String,
+    },
+    level: {
+        type: String,
+    },
+    height: {
+        type: String,
+    },
+    weight: {
+        type: String,
+    },
+    age: {
+        type: String,
+    },
+    activeLevel: {
+        type: String,
+    }
+    ,
     role: {
         type: String,
         enum: ['user', 'admin'],
@@ -27,6 +54,7 @@ const UserSchema= new mongoose.Schema({
         minlength: 6,
         select: false
     },
+
     resetPasswordToken: String,
     resetPasswordExpire: Date,
     createdAt: {
