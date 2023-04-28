@@ -7,7 +7,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
+// import SendIcon from "@mui/icons-material/Send";
 import { Col, Container, Row } from "react-bootstrap";
 import WeightForm from "./weightForm";
 import { sendMessage } from "../utils/script";
@@ -104,7 +104,6 @@ export default function InfoForm() {
               className="w-100 mt-4"
               variant="contained"
               color="secondary"
-              endIcon={<SendIcon />}
               onClick={() => handleSubmit()}
             >
               Send

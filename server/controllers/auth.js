@@ -4,11 +4,11 @@ const User = require("../models/User");
 // @route   POST /api/v1/auth/register
 // @access  Public
 exports.register = async (req, res, next) => {
-  const { name, email, password, role } = req.body;
-  if (!name || !email || !password || !role) {
+  const { firstname, lastname, email, password, sex, role } = req.body;
+  if (!firstname || !lastname || !email || !password || !sex || !role) {
     return res.status(400).json({
       success: false,
-      error: "Please provide name, email, password, and role",
+      error: "Please provide firstname, lastname, email, password, sex, and role",
     });
   }
   if (password.length < 8) {
@@ -34,9 +34,11 @@ exports.register = async (req, res, next) => {
 
   try {
     const user = await User.create({
-      name,
+      firstname,
+      lastname,
       email,
       password,
+      sex,
       role,
     });
     // Create token
